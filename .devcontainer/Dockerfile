@@ -29,8 +29,7 @@ RUN apt-get install -y --no-install-recommends ros-kinetic-franka-description
 RUN rm -rf /var/lib/apt/lists/*
 
 # Setup workspace ROS
-COPY  ./ros_entrypoint.sh /
-RUN bash /ros_entrypoint.sh
+RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash"
 RUN rosdep init && rosdep update --rosdistro $ROS_DISTRO
 
 # Correction warning node turtle: process 3135: D-Bus library appears to be incorrectly set up; 
