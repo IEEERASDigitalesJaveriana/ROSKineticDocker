@@ -2,5 +2,12 @@
     "name": "Docker ROS Kinetic RAS",
     "dockerFile": "Dockerfile",
     "appPort": 3000,
-    "runArgs": ["--net=host", "--volume=/tmp/.X11-unix:/tmp/.X11-unix", "--volume=/dev/dri:/dev/dri", "--env=QT_X11_NO_MITSHM=1", "--env=DISPLAY=:0"]
+    "runArgs": ["--net=host",
+                "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+                "--volume=/dev/dri:/dev/dri",
+                "--env=QT_X11_NO_MITSHM=1",
+                 "--env=DISPLAY=:1",
+                "--gpus","all"]
 }
+
+
