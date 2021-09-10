@@ -1,21 +1,6 @@
-FROM nvidia/opengl:1.0-glvnd-devel-ubuntu16.04
-
-ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES},display
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        git \
-        ca-certificates \
-        build-essential \
-        g++ \
-        libxinerama-dev \
-        libxext-dev \
-        libxrandr-dev \
-        libxi-dev \
-        libxcursor-dev \
-        libxxf86vm-dev \
-        libvulkan-dev && \
-    rm -rf /var/lib/apt/lists/*
-
+# This is an auto generated Dockerfile for ros:desktop-full
+# generated from docker_images/create_ros_image.Dockerfile.em
+FROM ubuntu:xenial
 
 ENV DEBIAN_FRONTEND=noninteractive 
 
@@ -35,8 +20,6 @@ RUN apt-get install -y --no-install-recommends ros-kinetic-desktop-full=1.3.2-0*
 RUN apt-get install -y --no-install-recommends ros-kinetic-rqt*
 RUN apt-get install -y --no-install-recommends build-essential python-rosdep python-rosinstall python-vcstools
 RUN apt-get install -y --no-install-recommends dbus-tests mesa-utils nano python-pip
-
-
 
 # install ros moveit
 RUN apt-get install -y --no-install-recommends ros-kinetic-moveit*
@@ -66,6 +49,5 @@ RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /root/.bashrc
 RUN echo "\n# Set ROS Network" >> /root/.bashrc
 RUN echo "export ROS_HOSTNAME=localhost" >> /root/.bashrc
 RUN echo "export ROS_MASTER_URI=http://localhost:11311" >> /root/.bashrc
-
 
 CMD ["/bin/bash"]
